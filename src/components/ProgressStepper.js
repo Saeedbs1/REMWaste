@@ -13,6 +13,8 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ShieldIcon from "@mui/icons-material/Shield";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import { useTheme } from "../context/ThemeContext";
+import "./ProgressStepper.css";
 
 export const steps = [
   { label: "Location", icon: <LocationOnIcon /> },
@@ -25,35 +27,28 @@ export const steps = [
 
 export default function ProgressStepper({ currentStep = 1 }) {
   const isMobile = useMediaQuery("(max-width:600px)");
+  const { darkMode } = useTheme();
+  const connectorColor = darkMode ? "rgba(255, 255, 255, 0.1)" : "#e3f0ff";
+  const iconBgInactive = darkMode ? "rgba(255, 255, 255, 0.1)" : "grey.200";
+  const textColor = darkMode ? "rgba(255, 255, 255, 0.7)" : "text.primary";
+  const textColorSecondary = darkMode
+    ? "rgba(255, 255, 255, 0.5)"
+    : "text.secondary";
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        bgcolor: "background.paper",
-        borderBottom: 1,
-        borderColor: "divider",
-        mb: 3,
-      }}
-    >
-      <Box sx={{ maxWidth: 1200, mx: "auto", px: 2, py: isMobile ? 1 : 2 }}>
+    <Box className="progress-wrapper">
+      <Box className="progress-container">
         {isMobile ? (
           <>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                mb: 1,
-              }}
-            >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box className="mobile-progress">
+              <Box className="step-info">
                 <Box
                   sx={{
                     width: 36,
                     height: 36,
-                    bgcolor: currentStep > 1 ? "primary.main" : "grey.200",
-                    color: currentStep > 1 ? "common.white" : "grey.500",
+                    bgcolor: currentStep > 1 ? "primary.main" : iconBgInactive,
+                    color:
+                      currentStep > 1 ? "common.white" : textColorSecondary,
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -63,22 +58,32 @@ export default function ProgressStepper({ currentStep = 1 }) {
                   {steps[currentStep - 1].icon}
                 </Box>
                 <Box>
-                  <Typography variant="subtitle2" color="text.primary">
+                  <Typography variant="subtitle2" sx={{ color: textColor }}>
                     Step {currentStep} of {steps.length}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography
+                    variant="caption"
+                    sx={{ color: textColorSecondary }}
+                  >
                     {steps[currentStep - 1].label}
                   </Typography>
                 </Box>
               </Box>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{ color: textColorSecondary }}>
                 {Math.round((currentStep / steps.length) * 100)}%
               </Typography>
             </Box>
             <LinearProgress
               variant="determinate"
               value={(currentStep / steps.length) * 100}
-              sx={{ height: 8, borderRadius: 4 }}
+              sx={{
+                height: 8,
+                borderRadius: 4,
+                backgroundColor: connectorColor,
+                "& .MuiLinearProgress-bar": {
+                  backgroundColor: "primary.main",
+                },
+              }}
             />
           </>
         ) : (
@@ -89,13 +94,13 @@ export default function ProgressStepper({ currentStep = 1 }) {
               "& .MuiStepConnector-line": {
                 height: "2px",
                 border: 0,
-                backgroundColor: "#e3f0ff",
+                backgroundColor: connectorColor,
                 borderRadius: "4px",
               },
               "& .MuiStepConnector-root": {
                 left: "calc(-50% + 20px)",
                 right: "calc(50% + 20px)",
-                top: "18px", 
+                top: "18px",
               },
               "& .MuiStepConnector-active": {
                 "& .MuiStepConnector-line": {
@@ -110,6 +115,15 @@ export default function ProgressStepper({ currentStep = 1 }) {
               },
               "& .MuiStep-root": {
                 padding: 0,
+              },
+              "& .MuiStepLabel-label": {
+                color: textColorSecondary,
+                "&.Mui-active": {
+                  color: textColor,
+                },
+                "&.Mui-completed": {
+                  color: textColor,
+                },
               },
             }}
           >
@@ -126,16 +140,20 @@ export default function ProgressStepper({ currentStep = 1 }) {
                             ? "primary.main"
                             : currentStep - 1 === idx
                             ? "primary.light"
-                            : "grey.200",
+                            : iconBgInactive,
                         color:
-                          currentStep - 1 >= idx ? "common.white" : "grey.500",
+                          currentStep - 1 >= idx
+                            ? "common.white"
+                            : textColorSecondary,
                         borderRadius: "50%",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         boxShadow:
                           currentStep - 1 === idx
-                            ? "0 0 0 4px #e3f0ff"
+                            ? `0 0 0 4px ${
+                                darkMode ? "rgba(255,255,255,0.1)" : "#e3f0ff"
+                              }`
                             : undefined,
                       }}
                     >

@@ -142,3 +142,68 @@
 .spec-item.highlight .spec-content .MuiTypography-h6 {
   color: white;
 }
+
+.dark-mode .MuiDialog-paper {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+}
+
+.dark-mode .dialog-title {
+  color: #fff;
+}
+
+.dark-mode .section-title {
+  color: #3a86ff;
+}
+
+.dark-mode .info-item,
+.dark-mode .cost-breakdown,
+.dark-mode .guideline-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .MuiTypography-root {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .cost-item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .cost-item.total {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: #3a86ff;
+}
+
+.dark-mode .hire-period {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark-mode .guideline-header {
+  color: #fff;
+}
+
+.dark-mode .spec-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .spec-icon {
+  background: rgba(58, 134, 255, 0.2);
+  color: #3a86ff;
+}
+
+.dark-mode .spec-content .MuiTypography-subtitle2 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .spec-content .MuiTypography-h6 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .MuiIconButton-root {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .MuiIconButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

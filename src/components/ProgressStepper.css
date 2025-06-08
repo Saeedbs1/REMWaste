@@ -1,0 +1,44 @@
+.progress-wrapper {
+  padding: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+
+
+.mobile-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.step-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dark-mode .progress-wrapper {
+  background: rgb(26, 26, 26);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .MuiStepLabel-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .MuiStepConnector-line {
+  background-color: rgba(255, 255, 255, 0.1);
+}

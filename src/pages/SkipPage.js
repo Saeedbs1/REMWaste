@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Container, CircularProgress, Alert, Grid } from "@mui/material";
+import {
+  Container,
+  CircularProgress,
+  Alert,
+  Grid,
+  Box,
+  IconButton,
+} from "@mui/material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SkipCard from "../components/SkipCard";
 import SkipFilters from "../components/SkipFilters";
 import ProgressStepper from "../components/ProgressStepper";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { useTheme } from "../context/ThemeContext";
 import "./SkipPage.css";
 
 function SkipPage() {
@@ -18,6 +29,8 @@ function SkipPage() {
     roadAllowed: false,
     heavyWaste: false,
   });
+  const { darkMode, toggleDarkMode } = useTheme();
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
     fetch(
@@ -29,6 +42,11 @@ function SkipPage() {
       })
       .then((data) => {
         setSkips(data);
+        if (data.length > 0 && data[0].postcode) {
+          setLocation({
+            postcode: data[0].postcode,
+          });
+        }
         setLoading(false);
       })
       .catch((err) => {
@@ -88,38 +106,70 @@ function SkipPage() {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4, mb: 10 }}>
+    <Container
+      maxWidth="xl"
+      disableGutters
+      sx={{
+        p: 0,
+        mb: 15,
+        bgcolor: darkMode ? "rgb(18, 18, 18)" : "background.default",
+        color: darkMode ? "#fff" : "text.primary",
+      }}
+    >
       <ProgressStepper currentStep={3} />
-      <h1 className="skip-page-title">Choose Your Skip Size</h1>
-      <div className="skip-page-caption-wrapper">
-        <span className="skip-page-caption">
-          Browse our range of skips to find the ideal size for your project.
-          <span className="caption-highlight">
-            {" "}
-            Prices include 14-day hire period.
+      <Box sx={{ p: 5 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 3,
+          }}
+        >
+          {location?.postcode && (
+            <Box className="location-badge">
+              <LocationOnIcon sx={{ color: "#3a86ff" }} />
+              <span className="location-label">Shipping to</span>
+              <span className="location-postcode">{location.postcode}</span>
+            </Box>
+          )}
+          <IconButton
+            className={`theme-toggle ${darkMode ? "dark" : ""}`}
+            onClick={toggleDarkMode}
+            size="large"
+          >
+            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
+        </Box>
+        <h1 className="skip-page-title">Choose Your Skip Size</h1>
+        <div className="skip-page-caption-wrapper">
+          <span className="skip-page-caption">
+            Browse our range of skips to find the ideal size for your project.
+            <span className="caption-highlight">
+              {" "}
+              Prices include 14-day hire period.
+            </span>
           </span>
-        </span>
-      </div>
-
-      <SkipFilters filters={filters} onFilterChange={handleFilterChange} />
-
-      {loading && (
-        <CircularProgress sx={{ display: "block", mx: "auto", my: 4 }} />
-      )}
-      {error && <Alert severity="error">{error}</Alert>}
-      {!loading && !error && (
-        <Grid container spacing={3} justifyContent="center">
-          {filteredSkips.map((skip) => (
-            <Grid item key={skip.id} xs={12} sm={6} md={4} xl={2}>
-              <SkipCard
-                skip={skip}
-                selected={selectedSkipId === skip.id}
-                onSelect={handleSelect}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      )}
+        </div>
+        <SkipFilters filters={filters} onFilterChange={handleFilterChange} />
+        {loading && (
+          <CircularProgress sx={{ display: "block", mx: "auto", my: 4 }} />
+        )}
+        {error && <Alert severity="error">{error}</Alert>}
+        {!loading && !error && (
+          <Grid container spacing={5} justifyContent="center">
+            {filteredSkips.map((skip) => (
+              <Grid item key={skip.id} xs={12} sm={6} md={4} xl={2}>
+                <SkipCard
+                  skip={skip}
+                  selected={selectedSkipId === skip.id}
+                  onSelect={handleSelect}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
     </Container>
   );
 }

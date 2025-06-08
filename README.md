@@ -2,7 +2,6 @@
 
 A redesigned version of the "Choose Your Skip Size" page from WeWantWaste.co.uk, built with React and Material-UI. This project demonstrates modern UI/UX design principles while maintaining the original functionality.
 
-
 ## 🚀 Getting Started
 
 1. Clone the repository
@@ -24,7 +23,6 @@ npm install
 npm start
 ```
 
-
 ## 📋 Requirements
 
 This project was created as part of a front-end development challenge to redesign the skip selection page from WeWantWaste.co.uk, with requirements to:
@@ -34,7 +32,6 @@ This project was created as part of a front-end development challenge to redesig
 - Ensure mobile responsiveness
 - Use clean, maintainable React code
 - Integrate with the provided API
-
 
 ## 🎯 Challenge Overview
 
@@ -46,7 +43,6 @@ This project is a redesign of the skip selection page from WeWantWaste.co.uk, fo
 - Mobile responsiveness
 - Real-time filtering and sorting
 - Clean, maintainable React code
-
 
 ## ✨ Key Features
 

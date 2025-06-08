@@ -2,7 +2,7 @@
   background: linear-gradient(135deg, #f6fcff 0%, #e1eeff 100%);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  margin: 30px;
+  margin: 50px 30px;
   overflow: hidden;
   border: 1px solid rgba(72, 191, 227, 0.2);
 }
@@ -92,4 +92,104 @@
   .filter-toggle-item {
     width: 100%;
   }
+}
+
+.dark-mode .skip-filters-wrapper {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .skip-filters-header {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .skip-filters-header .MuiTypography-root {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .skip-filters-header .MuiSvgIcon-root {
+  color: #3a86ff;
+}
+
+.dark-mode .skip-filters-content {
+  background: transparent;
+}
+
+.dark-mode .filter-section {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .filter-section-header {
+  color: #3a86ff;
+}
+
+.dark-mode .MuiSelect-select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .MuiSelect-root {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+}
+
+.dark-mode .MuiOutlinedInput-root {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .MuiSelect-icon {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-mode .MuiPopover-paper {
+  background: #1a1a1a !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .MuiMenuItem-root {
+  background: #1a1a1a !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark-mode .MuiMenuItem-root:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .MuiMenuItem-root.Mui-selected {
+  background: rgba(58, 134, 255, 0.2) !important;
+}
+
+.dark-mode .filter-toggles {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .filter-toggle-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .filter-toggle-item:hover {
+  background: rgba(58, 134, 255, 0.1);
+}
+
+.dark-mode .MuiSlider-rail {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .MuiSlider-track {
+  background-color: #3a86ff;
+}
+
+.dark-mode .MuiSlider-thumb {
+  background-color: #3a86ff;
 }

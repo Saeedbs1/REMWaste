@@ -34,3 +34,134 @@
   display: inline-block;
   margin-left: 4px;
 }
+
+.location-badge {
+  background: linear-gradient(135deg, #f6fcff 0%, #e1eeff 100%);
+  padding: 12px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(72, 191, 227, 0.2);
+  animation: fadeIn 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.location-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(58, 134, 255, 0.15);
+}
+
+.location-label {
+  color: #525b69;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: "Montserrat", "Roboto", sans-serif;
+  position: relative;
+  padding-right: 12px;
+}
+
+.location-label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 1px;
+  background: rgba(58, 134, 255, 0.2);
+}
+
+.location-area {
+  color: #22223b;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Montserrat", "Roboto", sans-serif;
+}
+
+.location-postcode {
+  color: #3a86ff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 2px 8px;
+  background: rgba(58, 134, 255, 0.1);
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+.theme-toggle {
+  background: linear-gradient(135deg, #f6fcff 0%, #e1eeff 100%) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(72, 191, 227, 0.2) !important;
+  color: #3a86ff !important;
+  transition: all 0.3s ease !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05) rotate(10deg);
+  box-shadow: 0 6px 16px rgba(58, 134, 255, 0.15) !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dark-mode .skip-page-title {
+  color: #fff;
+}
+
+.dark-mode .skip-page-caption-wrapper {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.dark-mode .skip-page-caption {
+  color: #e0e0e0;
+}
+
+.dark-mode .location-badge {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-color: rgba(72, 191, 227, 0.3);
+}
+
+.dark-mode .location-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark-mode .location-label::after {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .theme-toggle {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  border-color: rgba(72, 191, 227, 0.3) !important;
+}
+
+.dark-mode .location-area {
+  color: #fff;
+}
+
+.dark-mode .skip-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.dark-mode .skip-info-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.dark-mode .skip-sticky-bar {
+  background: rgba(18, 18, 18, 0.98);
+}
+
+.dark-mode .skip-sticky-disclaimer {
+  background: #1a1a1a;
+  color: #888;
+}
